@@ -1,5 +1,6 @@
 # failing-maven-build-example
-This maven build fails. Asking for help.
+<s>This maven build fails. Asking for help.</s>
+Keep this for my future self for reference.
 
 ## This project builds within eclipse
 To verify this fact:
@@ -8,4 +9,6 @@ To verify this fact:
 * Clean and build all projects
 This shows that both external and internal dependencies are resolved correctly.
 
-## This project does not build with maven
+## This project does <s>not</s> build with maven
+The problem has been the missing @Genmodel annotation.
+
