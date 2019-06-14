@@ -1,0 +1,36 @@
+grammar de.th_koeln.nt.fowler.Fowler with org.eclipse.xtext.common.Terminals
+
+generate fowler "http://www.th_koeln.de/nt/fowler/Fowler"
+
+Statemachine :
+     {Statemachine}
+	('events' 
+		events+=Event+ 
+	'end')?
+	('resetEvents' 
+		resetEvents+=[Event]+ 
+	'end')?
+	('commands' 
+		commands+=Command+ 
+	'end')?
+	states+=State*
+;
+
+Event:
+	name=ID code=ID
+;
+
+Command:
+	name=ID code=ID
+;
+
+State:
+	'state' name=ID
+		('actions' '{' actions+=[Command]+ '}')?
+		transitions+=Transition*
+	'end'
+;
+
+Transition:
+	event=[Event] '=>' state=[State]
+;

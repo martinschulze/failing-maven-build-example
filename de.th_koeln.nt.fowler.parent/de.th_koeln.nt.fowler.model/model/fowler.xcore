@@ -1,0 +1,31 @@
+package de.th_koeln.nt.fowler.model
+
+class Statemachine {
+	contains Event[] events
+	contains Event[] resetEvents
+	contains Command[] commands
+	contains State[] states
+	refers State startState
+}
+
+class Event {
+	String name
+	String code
+}
+
+class Command {
+	String name
+	String code
+}
+
+class State {
+	String name
+	refers Transition[] outgoingTransitions opposite startState
+	refers Command[] actions
+}
+
+class Transition {
+	refers Event event
+	refers State startState opposite outgoingTransitions
+	refers State endState
+}

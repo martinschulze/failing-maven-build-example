@@ -1,0 +1,32 @@
+			events
+				buttonPressed BP
+				timeExpired TE
+				waited W
+			end
+			
+			resetEvents
+				timeExpired
+			end
+			
+			commands
+				carLightRed CLR
+				carLightYellow CLY
+				carLightGreen CLG
+				
+				pedestrianLightRed PLR
+				pedestrianLightGreen PLG
+				
+				start4Sec S4S
+				start20Sec S20S
+			end
+			
+			state idle
+				actions {carLightGreen pedestrianLightRed}
+				buttonPressed => wait1
+			end
+			
+			state wait1
+				actions{carLightYellow pedestrianLightRed start4Sec}
+				waited => idle
+			end
+
