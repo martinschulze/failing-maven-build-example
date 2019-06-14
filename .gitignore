@@ -4,4 +4,5 @@ de.th_koeln.nt.fowler.parent/de.th_koeln.nt.fowler/model/
 de.th_koeln.nt.fowler.parent/*/src-gen/
 de.th_koeln.nt.fowler.parent/*/xtend-gen/
 de.th_koeln.nt.fowler.parent/*/target/
+!de.th_koeln.nt.fowler.parent/de.th_koeln.nt.fowler.ui.tests/xtend-gen/
 
