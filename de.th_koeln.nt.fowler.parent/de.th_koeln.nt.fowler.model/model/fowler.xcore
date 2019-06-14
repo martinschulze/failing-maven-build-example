@@ -1,4 +1,8 @@
-package de.th_koeln.nt.fowler.model
+@GenModel(
+    bundleManifest="false",
+    modelDirectory="de.th_koeln.nt.fowler.model/src-gen",
+    complianceLevel="8.0"
+)package de.th_koeln.nt.fowler.model
 
 class Statemachine {
 	contains Event[] events
