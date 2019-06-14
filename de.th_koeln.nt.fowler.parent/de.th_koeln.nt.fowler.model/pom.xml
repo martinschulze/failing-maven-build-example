@@ -135,7 +135,7 @@
 							<outputConfigurations>
 								<outputConfiguration>
 									<overrideExistingResources>true</overrideExistingResources>
-									<outputDirectory>${project.basedir}}/src-gen</outputDirectory>
+									<outputDirectory>${project.basedir}/src-gen</outputDirectory>
 									<createOutputDirectory>true</createOutputDirectory>
 								</outputConfiguration>
 							</outputConfigurations>
