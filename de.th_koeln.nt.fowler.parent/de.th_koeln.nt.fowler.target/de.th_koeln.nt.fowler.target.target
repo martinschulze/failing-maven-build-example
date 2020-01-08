@@ -34,5 +34,11 @@
 	<unit id="org.objectweb.asm.tree" version="7.0.0.v20181030-2244"/>
 	<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/orbit/2019-03"/>
 </location>
+
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.hamcrest.library" version="0.0.0"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20190226160451/repository"/>
+</location>
+
 </locations>
 </target>

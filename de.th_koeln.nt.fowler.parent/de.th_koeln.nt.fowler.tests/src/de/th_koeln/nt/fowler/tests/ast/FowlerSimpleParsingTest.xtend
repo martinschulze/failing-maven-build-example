@@ -4,22 +4,22 @@
 package de.th_koeln.nt.fowler.tests.ast
 
 import com.google.inject.Inject
+import de.th_koeln.nt.fowler.fowler.FowlerFactory
 import de.th_koeln.nt.fowler.fowler.Statemachine
+import de.th_koeln.nt.fowler.tests.FowlerInjectorProvider
 import org.eclipse.xtext.testing.InjectWith
-import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.util.ParseHelper
-import org.junit.Assert
-import org.junit.Test
-import org.junit.runner.RunWith
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.^extension.ExtendWith
 
 import static de.th_koeln.nt.fowler.tests.ContainsEObject.containsEObject
 import static org.hamcrest.MatcherAssert.assertThat
-import static org.hamcrest.CoreMatchers.not
-import de.th_koeln.nt.fowler.tests.FowlerInjectorProvider
-import de.th_koeln.nt.fowler.fowler.FowlerFactory
+import static org.hamcrest.Matchers.not
 
-@RunWith(typeof(XtextRunner))
+@ExtendWith(InjectionExtension)
 @InjectWith(typeof(FowlerInjectorProvider))
 class FowlerSimpleParsingTest {
 	@Inject extension ParseHelper<Statemachine>
@@ -34,8 +34,8 @@ class FowlerSimpleParsingTest {
 				reset R0
 			end
 		'''.parse => [
-			Assert.assertNotNull("Das Result ist nicht null.", it)
-			Assert.assertTrue("Beim Parsen sind Fehler aufgetreten.", it.eResource.errors.isEmpty)
+			Assertions.assertNotNull(it, "Das Result ist nicht null.")
+			Assertions.assertTrue(it.eResource.errors.isEmpty, "Beim Parsen sind Fehler aufgetreten.")
 		]
 	}
 	
@@ -44,7 +44,7 @@ class FowlerSimpleParsingTest {
 		'''
 			wrong text
 		'''.parse => [
-			Assert.assertNotNull("Das Result ist nicht null.", it)
+			Assertions.assertNotNull(it, "Das Result ist nicht null.")
 			assertThat("Beim Parsen sind keine Fehler aufgetreten.", not(it.eResource.errors.isEmpty))
 		]
 	}
@@ -57,7 +57,7 @@ class FowlerSimpleParsingTest {
 				reset R0
 			end
 		'''.parse => [
-			Assert.assertNotNull("Das Result ist null.", it)
+			Assertions.assertNotNull(it, "Das Result ist null.")
 			assertNoErrors
 			assertThat("Event is not created", it.eAllContents, containsEObject(astFactory.createEvent => [code="R0" name="reset"]))
 		]
@@ -68,7 +68,7 @@ class FowlerSimpleParsingTest {
 			state S0
 			end
 		'''.parse => [
-			Assert.assertNotNull("Das Result ist null.", it)
+			Assertions.assertNotNull(it, "Das Result ist null.")
 			assertNoErrors
 			assertThat("AST is empty.", not(it.eAllContents.empty))
 			assertThat("State is not created", it.eAllContents, containsEObject(astFactory.createState => [name="S0"]))
@@ -81,7 +81,7 @@ class FowlerSimpleParsingTest {
 				command1 C1
 			end
 		'''.parse => [
-			Assert.assertNotNull("Das Result ist null.", it)
+			Assertions.assertNotNull(it, "Das Result ist null.")
 			assertNoErrors
 			assertThat("AST is empty.", not(it.eAllContents.empty))
 			assertThat("State is not created", it.eAllContents, containsEObject(astFactory.createCommand => [name="command1" code="C1"]))

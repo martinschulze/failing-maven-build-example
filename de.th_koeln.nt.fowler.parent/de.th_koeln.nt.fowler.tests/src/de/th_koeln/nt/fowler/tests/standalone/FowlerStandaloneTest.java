@@ -2,7 +2,6 @@ package de.th_koeln.nt.fowler.tests.standalone;
 
 import com.google.inject.Injector;
 
-import org.junit.Test;
 import de.th_koeln.nt.fowler.FowlerStandaloneSetup;
 
 import org.eclipse.xtext.resource.XtextResource;
@@ -11,10 +10,11 @@ import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
+import org.junit.jupiter.api.Test;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
 
 import java.util.List;

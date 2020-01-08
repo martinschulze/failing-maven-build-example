@@ -13,17 +13,17 @@ import de.th_koeln.nt.fowler.tests.FowlerInjectorProvider
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
 import org.eclipse.xtext.testing.InjectWith
-import org.eclipse.xtext.testing.XtextRunner
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.eclipse.xtext.testing.extensions.InjectionExtension
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.^extension.ExtendWith
 
 import static de.th_koeln.nt.fowler.tests.ContainsEObject.containsEObject
 import static de.th_koeln.nt.fowler.tests.EqualsEObject.equalsEObject
 import static org.hamcrest.MatcherAssert.assertThat
-import static org.hamcrest.Matchers.*
+import static org.hamcrest.Matchers.equalTo
 
-@RunWith(typeof(XtextRunner))
+@ExtendWith(InjectionExtension)
 @InjectWith(typeof(FowlerInjectorProvider))
 class FowlerModelBuilderTest {
 	@Inject FowlerFactory astFactory
@@ -33,7 +33,7 @@ class FowlerModelBuilderTest {
 	
 	ResourceImpl ast
 	
-	@Before
+	@BeforeEach
 	def void createResource() {
 		ast = new ResourceImpl(URI.createURI(""))
 	}

@@ -2,22 +2,22 @@ package de.th_koeln.nt.fowler.tests.generator
 
 import com.google.inject.Inject
 import de.th_koeln.nt.fowler.generator.FowlerGenerator
+import de.th_koeln.nt.fowler.model.Command
+import de.th_koeln.nt.fowler.model.Event
 import de.th_koeln.nt.fowler.model.ModelFactory
+import de.th_koeln.nt.fowler.model.State
 import de.th_koeln.nt.fowler.model.Statemachine
+import de.th_koeln.nt.fowler.model.Transition
 import de.th_koeln.nt.fowler.tests.FowlerInjectorProvider
 import org.eclipse.xtext.testing.InjectWith
-import org.eclipse.xtext.testing.XtextRunner
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.eclipse.xtext.testing.extensions.InjectionExtension
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.^extension.ExtendWith
 
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.*
-import de.th_koeln.nt.fowler.model.Command
-import de.th_koeln.nt.fowler.model.Event
-import de.th_koeln.nt.fowler.model.State
-import de.th_koeln.nt.fowler.model.Transition
 
-@RunWith(typeof(XtextRunner))
+@ExtendWith(InjectionExtension)
 @InjectWith(typeof(FowlerInjectorProvider))
 class GeneratorTest {
 	@Inject ModelFactory modelFactory

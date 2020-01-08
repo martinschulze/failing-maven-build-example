@@ -8,18 +8,18 @@ import de.th_koeln.nt.fowler.fowler.FowlerFactory
 import de.th_koeln.nt.fowler.fowler.Statemachine
 import de.th_koeln.nt.fowler.tests.FowlerInjectorProvider
 import org.eclipse.xtext.testing.InjectWith
-import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
-import org.junit.Assert
-import org.junit.Test
-import org.junit.runner.RunWith
 
-import static de.th_koeln.nt.fowler.tests.ContainsEObject.containsEObject
-import static org.hamcrest.CoreMatchers.not
 import static org.hamcrest.MatcherAssert.assertThat
+import static org.hamcrest.Matchers.*
+import static de.th_koeln.nt.fowler.tests.ContainsEObject.containsEObject
+import org.junit.jupiter.api.^extension.ExtendWith
+import org.eclipse.xtext.testing.extensions.InjectionExtension
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Assertions
 
-@RunWith(typeof(XtextRunner))
+@ExtendWith(InjectionExtension)
 @InjectWith(typeof(FowlerInjectorProvider))
 class FowlerComplexParsingTest {
 	@Inject extension ParseHelper<Statemachine>
@@ -65,7 +65,7 @@ class FowlerComplexParsingTest {
 
 	@Test def void commandsAreCreated() {
 		trafficLightControl.parse => [
-			Assert.assertNotNull("Das Result ist nicht null.", it)
+			Assertions.assertNotNull(it, "Das Result ist nicht null.")
 			assertNoErrors
 			assertThat("AST is not empty.", not(it.eAllContents.empty))
 			assertThat("State is created", it.eAllContents, containsEObject(astFactory.createCommand => [
@@ -101,7 +101,7 @@ class FowlerComplexParsingTest {
 
 	@Test def void eventsAreCreated() {
 		trafficLightControl.parse => [
-			Assert.assertNotNull("Das Result ist nicht null.", it)
+			Assertions.assertNotNull(it, "Das Result ist nicht null.")
 			assertNoErrors
 			assertThat("AST is not empty.", not(it.eAllContents.empty))
 			assertThat("Event is created", it.eAllContents, containsEObject(astFactory.createEvent => [
@@ -121,7 +121,7 @@ class FowlerComplexParsingTest {
 
 	@Test def void resetEventsAreCreated() {
 		trafficLightControl.parse => [
-			Assert.assertNotNull("Das Result ist nicht null.", it)
+			Assertions.assertNotNull(it, "Das Result ist nicht null.")
 			assertNoErrors
 			assertThat("AST is not empty.", not(it.eAllContents.empty))
 			assertThat("ResetEvent is created", it.resetEvents.iterator, containsEObject(astFactory.createEvent => [

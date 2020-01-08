@@ -7,15 +7,15 @@ import com.google.inject.Inject
 import de.th_koeln.nt.fowler.fowler.Statemachine
 import de.th_koeln.nt.fowler.tests.FowlerInjectorProvider
 import org.eclipse.xtext.testing.InjectWith
-import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.eclipse.xtext.xbase.testing.CompilationTestHelper
-import org.junit.Assert
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.^extension.ExtendWith
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Assertions
 
-@RunWith(typeof(XtextRunner))
+@ExtendWith(InjectionExtension)
 @InjectWith(typeof(FowlerInjectorProvider))
 class FowlerIntegration {
 	@Inject extension ParseHelper<Statemachine>
@@ -61,7 +61,7 @@ class FowlerIntegration {
 	@Test
 	def void testGeneratedCode() {
 		trafficLightControl.parse => [
-			Assert.assertNotNull("Das Result ist nicht null.", it)
+			Assertions.assertNotNull(it, "Das Result ist nicht null.")
 			assertNoErrors
 		]
 		
