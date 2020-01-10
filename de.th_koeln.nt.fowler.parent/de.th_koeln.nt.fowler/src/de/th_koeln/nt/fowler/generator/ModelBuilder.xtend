@@ -34,7 +34,7 @@ class ModelBuilder {
 		ast.filterFor(Event).forEach[addEvent(it as Event)]
 		ast.filterFor(Command).forEach[addCommand(it as Command)]
 		ast.filterFor(State).forEach[addState(it as State)]
-		ast.filterFor(State).forEach[wireTransitions(it as State)]
+		ast.filterFor(State).forEach[wireTransitions(it as State)] //TODO: Hier könnte man eine create-Methode benutzen!
 		setStartState(ast.filterFor(State).head as State)
 	}
 
